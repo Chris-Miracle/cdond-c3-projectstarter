@@ -7,7 +7,7 @@ commands:
       # Add parameter here
       workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
         default:
-          type: string   
+        type: string   
     steps:
       - run:
           name: Destroy environments
@@ -24,7 +24,7 @@ commands:
       # Add parameter here   
       workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
         default:
-          type: string   
+        type: string   
     steps:
       - run:
           name: Revert migrations
@@ -361,10 +361,10 @@ workflows:
           filters:
             branches:
               only: [master]
-      # - configure-infrastructure:
-      #     requires: [deploy-infrastructure]
-      # - run-migrations:
-      #     requires: [configure-infrastructure]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
+      - run-migrations:
+          requires: [configure-infrastructure]
       # - deploy-frontend:
       #     requires: [run-migrations]
       # - deploy-backend:
