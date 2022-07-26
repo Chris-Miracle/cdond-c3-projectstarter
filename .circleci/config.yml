@@ -62,7 +62,7 @@ commands:
 
   install_nodejs:
     description: Install Nodejs v13
-    - steps:
+    steps:
         - run:
             name: Install Nodejs v13
             command: |
@@ -142,7 +142,7 @@ jobs:
       - save_cache:
           paths: [backend/node_modules]
           key: backend-test
-            
+
   scan-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -311,7 +311,6 @@ jobs:
       - destroy-environment
       - revert-migrations
 
-                    
   deploy-backend:
     docker:
       # Docker image here that supports Ansible
@@ -330,21 +329,17 @@ jobs:
           name: Deploy Backend
           command: |
             cd backend
-
             npm i
             npm run build
             cd ..
-
             cd .circleci/ansible
             mkdir files
             cd files
             tar -C ../../../backend -czvf artifact.tar.gz
             cd ../
-
             echo "Contents of the inventory.txt file is ......"
             cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
-
       - destroy-environment
       - revert-migrations
 
