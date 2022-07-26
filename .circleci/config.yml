@@ -390,7 +390,7 @@ jobs:
       # Docker image here that supports AWS CLI
       - image: amazon/aws-cli
     steps:
-      - checkout:
+      - checkout
       - run:
           name: Install dependencies
           command: |
