@@ -23,7 +23,7 @@
     npm run build
 
     sudo npm install forever -g
-    sudp npm install ts-node -g
+    sudo npm install ts-node -g
     forever start -c "ts-node -r tsconfig-paths/register -r dotenv/config src/main.ts" ./
   
   register: execute_node
