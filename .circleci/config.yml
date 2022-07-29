@@ -28,6 +28,7 @@ commands:
     steps:
       - run:
           name: Revert migrations
+          when: on_fail
           # Add when this will run
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
@@ -238,7 +239,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "9b:0c:86:dc:93:fa:5b:b2:91:19:12:4e:fb:79:6c:fb"
+            - "0d:01:72:d9:1e:c1:65:51:f7:55:05:18:5e:d3:c6:5a"
       - attach_workspace:
           at: ~/
       - install_ansible
@@ -282,7 +283,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "9b:0c:86:dc:93:fa:5b:b2:91:19:12:4e:fb:79:6c:fb"
+            - "0d:01:72:d9:1e:c1:65:51:f7:55:05:18:5e:d3:c6:5a"
       - attach_workspace:
           at: ~/
       - install_ansible
@@ -320,7 +321,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "9b:0c:86:dc:93:fa:5b:b2:91:19:12:4e:fb:79:6c:fb"
+            - "0d:01:72:d9:1e:c1:65:51:f7:55:05:18:5e:d3:c6:5a"
       - attach_workspace:
           at: ~/
       - install_ansible
@@ -378,7 +379,7 @@ jobs:
             echo ${FRONTEND_WEBSITE} 
             if curl -s ${FRONTEND_WEBSITE} | grep "Welcome"
             then
-              exit 0
+              exit 1
             else
               exit 1
             fi
